@@ -178,9 +178,9 @@ public class MainUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -285,6 +285,7 @@ public class MainUI extends javax.swing.JFrame {
             }else{
                 editProduct(idx);
             }
+            cleanTextFields();
             setTableProducts();
         }else if (jComboBox1.getSelectedItem().equals("Vender productos")){
             cart.add(getProductByCode(tfProductCode.getText()));
@@ -297,15 +298,20 @@ public class MainUI extends javax.swing.JFrame {
         }
         orderClientsByMoneySpent();
         setClientsInTableBestClients();
-        cleanTextFields();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         if ( jComboBox1.getSelectedItem().equals("Agregar producto")){
             setLabelsForAddProduct();
+            setTableProducts();
         }else if ( jComboBox1.getSelectedItem().equals("Vender productos")){
             setLabelseForSellProducts();
+            setTableCart();
+            cleanFieldsCart();
         }
+        cleanFieldsCart();
+        orderClientsByMoneySpent();
+        setClientsInTableBestClients();
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
